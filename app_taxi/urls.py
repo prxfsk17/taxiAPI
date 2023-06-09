@@ -4,5 +4,5 @@ from app_taxi import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.handle_hello_world)
+    path('', views.handle_main_page)
 ]
