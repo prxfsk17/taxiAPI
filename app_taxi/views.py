@@ -1,23 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpRequest, HttpResponse, HttpResponseNotAllowed
+from django.http import HttpRequest, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import View
+
+class MainPageView(View):
+    def get(self, request: HttpRequest) -> HttpResponse:
+        assert request
+        name = request.GET.get("name")
+        msg = [
+            "Hello from me",
+            f"Hello {name} from me"
+        ][bool(name)]
+
+        return HttpResponse(msg)
+    #
+    # def post(self, request: HttpRequest, **kw) -> HttpResponse:
+    #     return HttpResponse("post")
 
 
-# Create your views here.
-
-@csrf_exempt
-def handle_main_page(request : HttpRequest) -> HttpResponse:
-    if request.method == "GET":
-        return handle_main_get(request)
-    elif request.method == "POST":
-        return handle_main_post(request)
-    else:
-        return HttpResponseNotAllowed("invalid request")
-
-def handle_main_get(request : HttpRequest) -> HttpResponse:
-    return HttpResponse("hehe")
-
-def handle_main_post(request : HttpRequest) -> HttpResponse:
-    return HttpResponse("hehe2")
 
 
