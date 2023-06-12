@@ -1,2 +1,3 @@
 /.local/
 /.venv/
+/app_taxi/migrations/

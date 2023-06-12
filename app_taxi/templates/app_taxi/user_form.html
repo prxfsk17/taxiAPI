@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <title>All users</title>
 </head>
-<body>
-<h1>Contacts</h1>
+<h1>Editing user</h1>
 <hr>
 
-<form method = "post" action = "/taxi/user/new/">
-    <input name = "name" type = "text">
-    <input name = "phone" type = "text">
-    <button type = "submit">Создать</button>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
 </form>
-
-<ol>
-
-{% for user in object_list %}
-    <li>{{ user.name }} {{user.phone}}</li>
-{% endfor %}
-</ol>
+<p><a href="/taxi/main/"><button type="reset">Отменить</button></a></p>
 </body>
 </html>

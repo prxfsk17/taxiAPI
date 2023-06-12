@@ -17,8 +17,14 @@
 <ol>
 
 {% for user in object_list %}
-    <li>{{ user.name }} {{user.phone}}</li>
+    <tr>
+        <td> <a href = "/taxi/main/{{ user.pk }}/"> {{ user.name }} </a></td>
+
+        <td>{{user.phone}}</td>
+        <br>
+    </tr>
 {% endfor %}
 </ol>
+<p>dasdasdadsadasdadssadsadjhsfkjsdhflksjhfjsdgfshfjklsaj fciENRKCJNSFLASHNXFCJLASNEXKXWNACFINYAGHJJXFCMU.MLCHU</p>
 </body>
 </html>
