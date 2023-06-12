@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+</head>
+<body>
+<h1>Contacts</h1>
+<hr>
+
+<form method = "post" action = "/taxi/user/new/">
+    <input name = "name" type = "text">
+    <input name = "phone" type = "text">
+    <button type = "submit">Создать</button>
+</form>
+
+<ol>
+
+{% for user in object_list %}
+    <li>{{ user.name }} {{user.phone}}</li>
+{% endfor %}
+</ol>
+</body>
+</html>

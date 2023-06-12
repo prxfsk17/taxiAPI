@@ -1,22 +1,23 @@
-from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import View
+from django.views.generic import View, TemplateView, ListView, CreateView
+from django.shortcuts import render
+from app_taxi.models import User
 
-class MainPageView(View):
-    def get(self, request: HttpRequest) -> HttpResponse:
-        assert request
-        name = request.GET.get("name")
-        msg = [
-            "Hello from me",
-            f"Hello {name} from me"
-        ][bool(name)]
+# class MainPageView(View):
+#     def get(self, request: HttpRequest)->HttpResponse:
+#         users: list[User] = list(User.objects.all())
+#         return render(
+#             request,
+#             "app_taxi/user_list.html",
+#             {
+#                 "users": users
+#             }
+#         )
 
-        return HttpResponse(msg)
-    #
-    # def post(self, request: HttpRequest, **kw) -> HttpResponse:
-    #     return HttpResponse("post")
+class MainPageView(ListView):
+    model = User
 
-
-
-
+class CreateUserView(CreateView):
+    fields = ("name", "phone")
+    model = User
+    success_url = "/taxi/main/"
