@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete user</title>
+</head>
+<body>
+<h1>Are you sure to delete user?</h1>
+<hr>
+<p>
+    <form method = "post" action = "/taxi/main/{{object.pk}}/delete/">
+    {% csrf_token %}
+    <button type = "submit">Delete</button>
+
+</form>
+</p>
+<p><a href="/taxi/main/"><button type="reset">Отменить</button></a></p>
+
+</body>
+</html>

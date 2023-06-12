@@ -29,3 +29,6 @@ class EditMeView(UpdateView):
     fields = ("name", "phone")
     model = User
 
+class DeleteMeView(DeleteView):
+    model = User
+    success_url = "/taxi/main/"
