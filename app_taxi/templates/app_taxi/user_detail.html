@@ -9,6 +9,18 @@
 <h1>{{object.name}}</h1>
 <hr>
 <p>Phone: {{object.phone}}</p>
+
+<h2>Addresses:</h2>
+<ol>
+    {% for a in object.address_set.all %}
+    <li>{{a.city}} {{a.street}}</li>
+    {% endfor %}
+</ol>
+<p>
+    {% for t in object.tag_set.all %}
+    <span>{{t.label}}</span>
+    {% endfor %}
+</p>
 <p><a href = "/taxi/main/{{object.pk}}/edit/">Edit</a></p>
 <p><a href = "/taxi/main/{{object.pk}}/delete/">Delete (get)</a></p>
 

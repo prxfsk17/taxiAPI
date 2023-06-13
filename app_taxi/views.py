@@ -18,6 +18,7 @@ class MainPageView(ListView):
     model = User
 
 class CreateUserView(CreateView):
+    extra_context = {'page_header': 'Create user'}
     fields = ("name", "phone")
     model = User
     success_url = "/taxi/main/"
@@ -26,8 +27,10 @@ class OneUserView(DetailView):
     model = User
 
 class EditMeView(UpdateView):
+    extra_context = {'page_header': 'Edit user'}
     fields = ("name", "phone")
     model = User
+
 
 class DeleteMeView(DeleteView):
     model = User
