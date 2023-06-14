@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ object.name }} - Users</title>
+    <title>Маршрут: {{object.From}} -> {{object.To}}</title>
 </head>
 <body>
-<p><a href = "/taxi/main/"> <<< bact to main </a></p>
-<h1>{{object.name}}</h1>
+<p><a href = "/taxi/main/"> <<< На главную </a></p>
+<h1>Маршрут</h1>
 <hr>
-<p>Phone: {{object.phone}}</p>
+<h2>Информация о рейсе:</h2>
+<li>Маршрут выполняется из {{object.From}} в {{object.To}}</li>
+<li>Дата маршрута: {{object.date}}</li>
+<li>Время маршрута: {{object.time}}</li>
+<li>Количество забронированных мест: {{object.count}}</li>
 
-<h2>Addresses:</h2>
-<ol>
-    {% for a in object.address_set.all %}
-    <li>{{a.city}} {{a.street}}</li>
-    {% endfor %}
-</ol>
-<p>
-    {% for t in object.tag_set.all %}
-    <span>{{t.label}}</span>
-    {% endfor %}
-</p>
-<p><a href = "/taxi/main/{{object.pk}}/edit/">Edit</a></p>
-<p><a href = "/taxi/main/{{object.pk}}/delete/">Delete (get)</a></p>
+
+<p><a href = "/taxi/main/{{object.pk}}/edit/">Изменить маршрут</a></p>
+<p><a href = "/taxi/main/{{object.pk}}/delete/">Удалить заказ</a></p>
 
 </body>
 </html>

@@ -2,29 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All users</title>
+    <title>Бронирование маршрутов</title>
 </head>
 <body>
-<h1>Contacts</h1>
-<hr>
+<h1>Маршрутное агенство ITprxfsk</h1>
+{% block content %}
+{% if user.is_authenticated %}
+  Здравствуйте, {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Выйти из аккаунта</a></p>
 
-<form method = "post" action = "/taxi/user/new/">
-    <input name = "name" type = "text">
-    <input name = "phone" type = "text">
-    <button type = "submit">Создать</button>
-</form>
+<hr>
+    <form method = "post" action = "/taxi/user/new/">
+        <input name = "From" placeholder="Точка отправления" type = "text">
+        <input name = "To" placeholder="Точка прибытия" type = "text">
+        <input name = "date" placeholder="Дата" type = "text">
+        <input name = "time" placeholder="Время" type = "text">
+        <input name = "count" placeholder="Количество мест" type = "text">
+        <button type = "submit">Создать</button>
+    </form>
+
+
 
 <ol>
+<h2>На данный момент заказаны следующие рейсы</h2>
 
-{% for user in object_list %}
-    <tr>
-        <td> <a href = "/taxi/main/{{ user.pk }}/"> {{ user.name }} </a></td>
+    {% for user in object_list %}
+        <tr>
+            <td> <a href = "/taxi/main/{{ user.pk }}/"> {{ user.From }} </a></td>
 
-        <td>{{user.phone}}</td>
-        <br>
-    </tr>
-{% endfor %}
-</ol>
+            <td>{{user.To}}</td>
+            <br>
+        </tr>
+    {% endfor %}
+    </ol>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+
+
+
 
 </body>
 </html>
+

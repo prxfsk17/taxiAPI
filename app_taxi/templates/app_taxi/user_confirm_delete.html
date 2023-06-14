@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Delete user</title>
+    <title>Удалить заказ на рейс</title>
 </head>
 <body>
-<h1>Are you sure to delete user?</h1>
+<h1>Вы уверены, что хотите удалить заказ?</h1>
 <hr>
 <p>
     <form method = "post" action = "/taxi/main/{{object.pk}}/delete/">
     {% csrf_token %}
-    <button type = "submit">Delete</button>
+    <button type = "submit">Да, удалить</button>
 
 </form>
 </p>
